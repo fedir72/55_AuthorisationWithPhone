@@ -1,0 +1,6 @@
+framework module Pods_55_AutorizationWithPhoneNumber {
+  umbrella header "Pods-55-AutorizationWithPhoneNumber-umbrella.h"
+
+  export *
+  module * { export * }
+}
