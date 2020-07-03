@@ -25,13 +25,13 @@ class PhoneNumberVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       setuPconfig()
+         //переход на  следующий контроллер
+          setuPconfig()
     }
     
     @IBAction func fetchCodeTapped(_ sender: UIButton) {
-        print("try ...")
-        dismiss(animated: true, completion: nil)
+    showCodeValidVC()
+    
     }
     
     private func setuPconfig() {
@@ -44,10 +44,18 @@ class PhoneNumberVC: UIViewController {
         listController = FPNCountryListViewController(style: .grouped)
         listController?.setup(repository: phoneNumberTextField.countryRepository)
         //послевыбора страны
+        
         listController?.didSelect = {country in
             self.phoneNumberTextField.setFlag(countryCode: country.code)
         }
     }
+    
+    func showCodeValidVC() {
+        let stor = UIStoryboard(name: "Main", bundle: nil)
+        let vc = stor.instantiateViewController(identifier: "CodeValidVC") as! CodeValidVC
+        self.present(vc, animated: true, completion: nil )
+    }
+    
     
     
 
